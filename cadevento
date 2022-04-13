@@ -1,0 +1,24 @@
+// evento de cadastro para palestra estudantil.
+let listaDeEstudantes = ["Helena", "Chico", "joão","José", "Maria"];
+let quantidadeDeEstudantes = listaDeEstudantes.length;
+let idadeestudante = 17
+let dataatual = new Date;
+let dataevento = 12/05/2023
+//let dataatual = Date.now()
+if (quantidadeDeEstudantes < 100) {
+listaDeEstudantes.push("cadastro permitido");
+console.log(listaDeEstudantes);
+} else {
+console.log("Não é possivel mais alunos neste evento");
+}
+if (idadeestudante > 18) {
+    console.log("Liberado");
+} else {
+    console.log ("Negado")
+    console.log (dataatual)
+}
+if (dataatual < dataevento) {
+    console.log("data não permitida")
+} else {
+    console.group("Data Permitida")
+}
