@@ -1,0 +1,15 @@
+create schema dbfilmes;
+create table Filmes(
+IdFilme INT primary key not null Auto_increment,
+Titulo varchar(100) not null, 
+Diretor varchar(100) not null,
+Genero Varchar(100) not null,
+Duracao datetime not null
+);
+
+create table Elenco(
+id_Filme_elenco int not null,
+s_Ator_Elenco varchar(100) not null,
+s_Idade datetime not null,
+s_Nacionalidade varchar(100) not null
+);
