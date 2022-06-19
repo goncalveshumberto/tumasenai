@@ -1,0 +1,33 @@
+use comabem;
+
+/*parte de inserção de dados*/
+insert into unidades (ds_unidade) values ("Kilo");
+insert into unidades (ds_unidade) values ("Unidade");
+insert into unidades (ds_unidade) values ("Litro");
+insert into unidades (ds_unidade) values ("Metro");
+insert into unidades (ds_unidade) values ("Duzia");
+
+insert Into produtos (ds_produto, vl_produto, qt_produto, cd_unidade) Values ("Carne", 30.00, 2 , 1);
+insert Into produtos (ds_produto, vl_produto, qt_produto, cd_unidade) Values ("Oleo", 10.00, 1 , 2);
+insert Into produtos (ds_produto, vl_produto, qt_produto, cd_unidade) Values ("leite", 5.00, 1.5 , 3);
+insert Into produtos (ds_produto, vl_produto, qt_produto, cd_unidade) Values ("Alface", 3.00, 1 , 2);
+insert Into produtos (ds_produto, vl_produto, qt_produto, cd_unidade) Values ("Laranja", 8.00, 10 , 5);
+
+/*parte de alteração de dados*/
+update produtos set ds_produto = "Laranjas" where cd_produto = 5;
+update produtos set cd_unidade = 2 where cd_produto = 1;
+update produtos set vl_produto = 100.00 where cd_produto = 1;
+
+/*consulta de dados*/
+
+select ds_produto, vl_produto, qt_produto from Produtos order by ds_produto; 
+select *from produtos;
+select *from unidades;
+Select p.ds_produto as 'produto', u.ds_unidade as 'Unidade'
+from Produtos as p
+join unidades as u on p.cd_Unidade = u.cd_unidade;
+
+/*consulta de dados*/
+
+delete from produtos where cd_produto = 1;
+delete from produtos where cd_produto = 5;
