@@ -1,0 +1,11 @@
+/*colocar o schema em uso*/
+Use comabem;
+
+/*criar novo perfil de usuário*/
+create role novoPerfil;
+
+/*criar novo usuário e adicionar ao perfil criado*/
+Create user Humberto identified by "senhaforte" default role novoPerfil;
+
+/*definindo o usário criado para apenas usar o comando select*/
+grant select on comabem.* to Humberto;
