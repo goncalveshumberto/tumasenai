@@ -61,3 +61,74 @@ public class cadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
     }
 }
+
+    public void Inserir(View view) {
+        EditText etNome = findViewById(R.id.editTextNome);
+        String nome = etNome.getText().toString();
+        EditText etQuantidade = findViewById(R.id.editTextQuantidade);
+        int quantidade = Integer.parseInt(etQuantidade.getText().toString());
+        EditText etPreco = findViewById(R.id.editTextPreco);
+        double preco = Double.parseDouble(etPreco.getText().toString());
+        Produto = new Produto(nome, quantidade, preco);
+        ProdutoDAO dao;
+        dao = new ProdutoDAO(this);
+        long id = dao.inserir(produto);
+        Toast.makeText(this, "Produto inseido com a ID: " + id, Toast.LENGTH_SHORT).show();
+
+
+    }
+}
+}
+//produto DAO
+package comabem.com;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+public class ProdutoDAO {
+    private Conexao conexao;
+    private SQLiteDatabase banco;
+
+    public ProdutoDAO(Context context){
+        conexao = new Conexao(context);
+        banco = conexao.getWritableDatabase();
+    }
+    public long inserir(Produto produto){
+        ContentValues values = new ContentValues();
+        values.put("nome",produto.getNome());
+        values.put("quantidade",produto.getQuantidade());
+        values.put("preco",produto.getPreco());
+        return banco.insert("produtos",null,values);
+    }
+
+}
+//conexao
+
+package comabem.com;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.Nullable;
+
+public class Conexao extends SQLiteOpenHelper {
+
+    private static final String name = "banco.db";
+    private static int version = 4;
+
+    public Conexao(@Nullable Context context){
+        super(context, name, null, version);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table produtos(id integer primary key autoincrement," + "nome varchar(50), quantidade int, preco double)");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+}
