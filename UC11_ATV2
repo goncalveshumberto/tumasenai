@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cadastroActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="433dp"
+        android:layout_height="165dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="119dp"
+        android:layout_height="167dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324"
+        app:srcCompat="@drawable/carrinho_web" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="188dp"
+        android:layout_height="50dp"
+        android:text="Produtos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.353" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="410dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:hint="Digite a quantidade"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.641" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="410dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:hint="Digite o preço do Produto"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.738" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="410dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:hint="Digite o nome do Produto"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.537" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Inserir"
+        android:text="Inserir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Câmera"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.379" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+//produto
+package comabem.com;
+
+public class Produto {
+    private int id;
+    private String nome;
+    private int quantidade;
+    private double preco;
+
+    public Produto(String nome, int quantidade, double preco) {
+       // this.nome = nome;
+        //this.quantidade = quantidade;
+       // this.preco = preco;
+        setNome(nome);
+        setQuantidade(quantidade);
+        setPreco(preco);
+
+    }
+
+    public produto(){
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public String toString(){ return nome; }
+}
+
+//conexaojava
+package comabem.com;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.Nullable;
+
+public class Conexao extends SQLiteOpenHelper {
+
+    private static final String name = "banco.db";
+    private static int version = 4;
+
+    public Conexao(@Nullable Context context){
+        super(context, name, null, version);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table produtos(id integer primary key autoincrement," + "nome varchar(50), quantidade int, preco double)");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+}
+\\ProdutoDAO
+package comabem.com;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+public class ProdutoDAO {
+    private Conexao conexao;
+    private SQLiteDatabase banco;
+
+    public ProdutoDAO(Context context){
+        conexao = new Conexao(context);
+        banco = conexao.getWritableDatabase();
+    }
+    public long inserir(Produto produto){
+        ContentValues values = new ContentValues();
+        values.put("nome",produto.getNome());
+        values.put("quantidade",produto.getQuantidade());
+        values.put("preco",produto.getPreco());
+        return banco.insert("produtos",null,values);
+    }
+
+}
+\\mainactivit
+package comabem.com;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+
+public class MainActivity extends AppCompatActivity implements Runnable{
+    Thread thread;
+    Handler handler;
+    int i;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        handler = new handler();
+        thread = new Thread();
+        thread.start();
+
+    }
+
+    @Override
+    public void run() {
+        i = 1;
+
+        try {
+            while (1,100) {
+                Thread.sleep(15);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        1++;
+                    }
+                })
+
+        } catch(Exception e)
+
+        }
+        finish();
+        startActivity(new Intent(this, cadastroActivity.class));
+    }
+}
+\\cadastro java
+package comabem.com;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class cadastroActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cadastro);
+    }
+
+
+
+
+    public void Inserir(View view) {
+        EditText etNome = findViewById(R.id.editTextNome);
+        String nome = etNome.getText().toString();
+        EditText etQuantidade = findViewById(R.id.editTextQuantidade);
+        int quantidade = Integer.parseInt(etQuantidade.getText().toString());
+        EditText etPreco = findViewById(R.id.editTextPreco);
+        double preco = Double.parseDouble(etPreco.getText().toString());
+        Produto = new Produto(nome, quantidade, preco);
+        ProdutoDAO dao;
+        dao = new ProdutoDAO(this);
+        long id = dao.inserir(produto);
+        Toast.makeText(this, "Produto inseido com a ID: " + id, Toast.LENGTH_SHORT).show();
+
+
+    }
+}
+}

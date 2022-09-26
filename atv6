@@ -40,3 +40,120 @@ public class Conexao {
         obj_conexao.conexao();
     }
 }
+//DAO
+
+import com.mysql.cj.xdevapi.Column;
+import com.mysql.cj.xdevapi.JsonParser;
+
+import java.sql.*;
+
+public class DAO_produtos
+{
+    Conexao obj_conexao = new Conexao();
+
+    public void consultar(){
+        obj_conexao.conexao();
+        Statement stm = null;
+        ResultSet rs = null;
+        // 47 min
+        try {
+            stm = obj_conexao.conn.createStatement();
+            rs = stm.executeQuery("select * from produtos");
+            while(rs.next())
+                System.out.println(rs.getInt(1)+
+                       " " + rs.getString(2) +
+                        " " + rs.getDouble(3) +
+                        " " + rs.getDouble(4) +
+                        " " + rs.getInt(5));
+            obj_conexao.desconecta();
+
+        }
+        catch (SQLException e)
+        {
+           e.printStackTrace();
+        }
+
+
+    }
+
+    public void inserir(Produto p){
+        obj_conexao.conexao();
+        PreparedStatement pst = null;
+        String sql = "INSERT INTO Produtos (cd_produto, ds_produto, vl_produto, qt_produto, cd_unidade) VALUES(?,?,?,?,?)";
+        // 47 min
+        try {
+            pst = obj_conexao.conn.prepareStatement(sql);
+            pst.setInt(1,p.getCd_produto());
+            pst.setString(2,p.getDs_produto());
+            pst.setDouble(3,p.getVl_Produto());
+            pst.setDouble(4,p.getQt_Produto());
+            pst.setInt(5,p.getCd_unidade());
+            pst.execute();
+            obj_conexao.desconecta();
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public void alterar(Produto p) {
+        obj_conexao.conexao();
+        PreparedStatement pst = null;
+        String sql = "UPTADE Produtos SET ds_produto=?, vl_produto=?, qt_produto=?, cd_unidade=? WHERE cd_produto = ?";
+        try {
+            pst = obj_conexao.conn.prepareStatement(sql);
+
+            pst.setString(1, p.getDs_produto());
+            pst.setDouble(2, p.getVl_Produto());
+            pst.setDouble(3, p.getQt_Produto());
+            pst.setInt(4, p.getCd_unidade());
+            pst.setInt(5, p.getCd_produto());
+            pst.execute();
+            obj_conexao.desconecta();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+        public void excluir(int id) {
+            obj_conexao.conexao();
+            PreparedStatement pst = null;
+            String sql = "DELETE FROM Produtos WHERE cd_produto=?";
+            try {
+                pst = obj_conexao.conn.prepareStatement(sql);
+                pst.setInt(1, id);
+                pst.execute();
+                obj_conexao.desconecta();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+//principal
+
+public class Principal {
+    public static void main(String[] args) {
+        DAO_produtos obj_produtos = new DAO_produtos();
+
+        //Consultar Produtos
+        //obj_produtos.consultar();
+
+        //Inserir produtos
+
+        //Produto novoProduto = new Produto(7,"Miojo",5.00,10,1);
+        //obj_produtos.inserir(novoProduto);
+
+        //Alterar produto
+       // Produto produtoalterado = new Produto(7,"Miojo alterado", 2.5,1,2);
+        //obj_produtos.alterar(produtoalterado);
+
+        // EXCLUIR PRODUTO
+        obj_produtos.excluir(4);
+    }
+}
